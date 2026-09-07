@@ -1,0 +1,63 @@
+\documentclass[tikz,border=2pt]{standalone}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{groupplot}[
+    group style={
+        group size=2 by 1,
+        horizontal sep=4mm,
+        y descriptions at=edge left,
+    },
+    xlabel={$n$},
+    ylabel={RPS advantage $\varepsilon$},
+    xmin=1.7, xmax=16,
+    xtick distance=4,
+    ymin=5.4e-20, ymax=1,
+    try min ticks log=5,
+    ymode=log,
+    log basis y=2,
+    width=0.57\textwidth,
+    height=0.5\textwidth,
+    legend style={font=\tiny},
+    xmajorgrids=true,
+    ymajorgrids=true,
+    grid style=dashed,
+    legend pos=south west,
+]
+\nextgroupplot[
+    title={$p=2^{-12}$},
+]
+    \addplot[color=red, mark=*, mark size=1pt] table {p2-12_ours.tsv};
+    \addlegendentry{This work}
+    \addplot[color=green!80!black, mark=o, mark size=1pt] table {p2-12_BFO23.tsv};
+    \addlegendentry{[BFO23]}
+    \addplot[color=orange, dotted, thick] table {p2-12_JMB24.tsv};
+    \addlegendentry{[JMB24]}
+    \addplot[color=blue, mark=x, mark size=2pt] table {p2-12_BNR25.tsv};
+    \addlegendentry{[BNR25]}
+    \addplot[color=purple, mark=diamond, mark size=2pt] table {p2-12_perseus_isw.tsv};
+    \addlegendentry{[BC26]}
+
+\nextgroupplot[
+    title={$p=2^{-16}$},
+]
+    \addplot[color=red, mark=*, mark size=1pt] table {p2-16_ours.tsv};
+    % \addlegendentry{This work}
+    \addplot[color=green!80!black, mark=o, mark size=1pt] table {p2-16_BFO23.tsv};
+    % \addlegendentry{\cite{TCHES:BerFauOrl23}}
+    \addplot[color=orange, dotted, thick] table {p2-16_JMB24.tsv};
+    % \addlegendentry{\cite{TCHES:JahMenBat24}}
+    \addplot[color=blue, mark=x, mark size=2pt] table {p2-16_BNR25.tsv};
+    % \addlegendentry{\cite{AC:BelNorRiv25}}
+    \addplot[color=purple, mark=diamond, mark size=2pt] table {p2-16_perseus_isw.tsv};
+    % \addlegendentry{\cite{DBLP:conf/eurocrypt/BelaidC26}}
+
+\end{groupplot}
+\end{tikzpicture}
+\end{document}
+

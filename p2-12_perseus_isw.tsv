@@ -1,0 +1,6 @@
+# time uv run aes.py -d 2 -p '2**-12' --samples='2**20' --backend=favom --prej-lim=3 --mul isw --wire-model --mr
+x y
+2 0.0027183604163075873
+3 6.183447138968845e-06
+4 2.4485230467848293e-08
+5 1.435626342098233e-10
